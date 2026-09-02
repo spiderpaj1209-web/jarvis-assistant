@@ -1,29 +1,21 @@
 # Limitations et gratuité
 
-## Vérité sur la gratuité
+## Routage hybride réel
 
-Aucun fournisseur externe n’est présenté comme « gratuit à vie ». Les conditions, quotas et exigences de carte bancaire peuvent changer. Nova doit donc rester utilisable sans fournisseur externe.
+Le mode Automatique suit cet ordre : Cloud configuré, Ollama local, puis démo. Nova affiche la source effective sur chaque réponse : `Cloud`, `Local — Ollama` ou `Démo locale`.
 
-## Mode disponible sans clé
+## Cloud
 
-- Discussion de démonstration.
-- Création de pages HTML/CSS/JavaScript et d’un mini-jeu web simple.
-- Prévisualisation locale dans une iframe sandboxée.
-- Stockage local du navigateur.
-- Export et import JSON.
-- Partage d’écran uniquement après l’autorisation explicite de l’utilisateur.
+Un fournisseur cloud n’est pas activé dans le frontend : GitHub Pages ne peut pas protéger une clé. Un backend HTTPS séparé devra être configuré avant d’activer `CloudProvider`. Les quotas et conditions sont variables et ne sont jamais présentés comme illimités.
 
-## Limites connues
+## Local
 
-- Le mode démo ne remplace pas un vrai modèle de langage : les réponses sont limitées et déterministes.
-- Le stockage navigateur dépend du quota de chaque navigateur. L’export JSON est la sauvegarde récupérable.
-- Les APIs vocales du navigateur dépendent du navigateur, du système et des permissions.
-- Un site web ne peut pas contrôler clavier, souris ou fichiers système librement. Ces fonctions exigeraient une application desktop ou un agent local explicite.
-- Le code généré s’exécute uniquement dans une iframe isolée. Aucun script système n’est exécuté.
+Le secours local exige Ollama lancé sur `http://localhost:11434` et au moins un modèle téléchargé. Nova n’envoie alors aucune requête à une API cloud.
 
-## Règles si un fournisseur est ajouté
+## Écran et images
 
-- Vérifier le plan gratuit, les quotas, la carte bancaire et la date de vérification avant activation.
-- Afficher fournisseur actif, quota connu et repli actif.
-- En cas d’échec ou de quota atteint, revenir au mode démo sans supprimer les données.
-- Ne jamais intégrer une clé API au frontend ni dans Git.
+Le navigateur demande toujours une autorisation explicite avant tout partage d’écran. Les captures ne sont pas envoyées automatiquement : une future analyse d’écran devra afficher clairement la destination (cloud ou local) et demander l’action de l’utilisateur.
+
+## Données
+
+Les conversations sont stockées dans le navigateur et restent exportables/importables en JSON. L’effacement des données du navigateur peut les supprimer : l’export est la sauvegarde récupérable.

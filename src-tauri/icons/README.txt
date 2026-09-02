@@ -1,0 +1,1 @@
+Place a generated icon.png here before building a release. Tauri requires platform icons for a production installer.

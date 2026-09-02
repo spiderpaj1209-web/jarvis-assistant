@@ -1,1 +1,8 @@
-PLACEHOLDER
+fastapi
+uvicorn[standard]
+groq
+python-pptx
+sqlalchemy
+psycopg2-binary
+pydantic
+python-multipart

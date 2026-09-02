@@ -3,8 +3,25 @@
   "productName": "Jarvis",
   "version": "0.2.1",
   "identifier": "com.spiderpaj1209.jarvis",
-  "build": { "frontendDist": "../dist" },
-  "app": { "windows": [{ "title": "Jarvis", "width": 1280, "height": 820, "resizable": true }], "security": { "csp": "default-src 'self'; connect-src 'self' https://*.onrender.com https://api.github.com https://github.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; media-src 'self' blob: https:;" } },
-  "plugins": { "updater": { "pubkey": "__JARVIS_PUBLIC_KEY__", "endpoints": ["https://github.com/spiderpaj1209-web/jarvis-assistant/releases/latest/download/latest.json"] } },
-  "bundle": { "active": true, "targets": "all", "icon": ["icons/icon.png"], "createUpdaterArtifacts": true }
+  "build": {
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Jarvis",
+        "width": 1100,
+        "height": 700,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi"],
+    "icon": ["icons/icon.ico", "icons/icon.png"]
+  }
 }

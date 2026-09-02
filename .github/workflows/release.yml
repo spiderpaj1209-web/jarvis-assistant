@@ -8,11 +8,7 @@ on:
 
 jobs:
   release:
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: [ubuntu-22.04, macos-latest, windows-latest]
-    runs-on: ${{ matrix.platform }}
+    runs-on: windows-latest
     permissions:
       contents: write
     steps:

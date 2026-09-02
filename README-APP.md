@@ -1,19 +1,18 @@
 # Jarvis Desktop V2
 
-Application Tauri avec interface 3D, conversation texte/micro, bouton Tester et bouton Mise a jour.
+Le bouton Mise a jour utilise le plugin updater Tauri et les GitHub Releases. Ne committe jamais ta clé privée.
 
-## Developpement
+Secrets GitHub Actions a créer dans Settings > Secrets and variables > Actions:
+- TAURI_SIGNING_PRIVATE_KEY : contenu de `%USERPROFILE%\\.tauri\\jarvis.key`
+- TAURI_SIGNING_PRIVATE_KEY_PASSWORD : mot de passe choisi lors de la génération
 
-```bash
-npm install
-npm run tauri:dev
+La clé publique doit remplacer `__JARVIS_PUBLIC_KEY__` dans `src-tauri/tauri.conf.json`.
+
+Pour publier une version:
+```bat
+git add .
+git commit -m "release"
+git tag v0.2.1
+git push origin main --tags
 ```
-
-## Release
-
-1. Ajouter les icones dans `src-tauri/icons/`.
-2. Creer un tag GitHub, par exemple `v0.2.0`.
-3. GitHub Actions compile les installeurs.
-4. Publier la release.
-
-Le bouton de mise a jour est prepare pour etre relie au updater Tauri signe dans une prochaine etape. Aucun secret ne doit etre place dans Git.
+Le workflow compile les installeurs et publie la release. Les utilisateurs pourront ensuite cliquer sur Mise a jour.
